@@ -1,25 +1,36 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { GlitzClient } from "@glitz/core";
+import { GlitzProvider } from "@glitz/react";
+// import {
+//   BrowserRouter as Router,
+//   Switch,
+//   Route,
+//   Link
+// } from "react-router-dom";
+
+import MainApp from "./components/MainApp";
+
+const glitz = new GlitzClient();
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <GlitzProvider glitz={glitz}>
+      <MainApp />
+
+      {/* <Router>
+          <Switch>
+            <Route path="/social">
+              <Social />
+            </Route>
+            <Route path="/users">
+              <Users />
+            </Route>
+            <Route path="/">
+              <Main />
+            </Route>
+          </Switch>
+        </div>
+      </Router> */}
+    </GlitzProvider>
   );
 }
 
