@@ -1,28 +1,29 @@
 import * as actions from "../actions";
 import * as types from "../actions/types";
+import parsedStorage from "../utils/localStorage";
 
-export type UserState = {
-  isAuthed: boolean;
-  userName: string;
-  fullName: string;
-  email: string;
-  profilePicture: string;
-  biography: string;
+const initialState: types.UserState = {
+  isAuthed: parsedStorage ? parsedStorage.user.isAuthed : false,
+  userName: parsedStorage ? parsedStorage.user.userName : "",
+  fullName: parsedStorage ? parsedStorage.user.fullName : "",
+  email: parsedStorage ? parsedStorage.user.email : "",
+  profilePicture: parsedStorage ? parsedStorage.user.profilePicture : "",
+  biography: parsedStorage ? parsedStorage.user.biography : "",
 };
 
-const initialState: UserState = {
-  isAuthed: false,
-  userName: "",
-  fullName: "",
-  email: "",
-  profilePicture: "",
-  biography: "",
-};
+// const initialState: types.UserState = {
+//   isAuthed: false,
+//   userName: "",
+//   fullName: "",
+//   email: "",
+//   profilePicture: "",
+//   biography: "",
+// };
 
 export const loginReducer = (
-  state: UserState = initialState,
+  state: types.UserState = initialState,
   action: types.LoginType
-): UserState => {
+): types.UserState => {
   switch (action.type) {
     case actions.LOGIN:
       return {

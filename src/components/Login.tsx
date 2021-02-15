@@ -1,19 +1,18 @@
 import { styled } from "@glitz/react";
 import { ChangeEvent, useState } from "react";
-import { connect } from "react-redux";
+import { connect, useSelector, useDispatch } from "react-redux";
 import * as types from "../actions/types";
 import * as actions from "../actions";
 import { RootState } from "../reducers";
-import { UserState } from "../reducers/loginReducer";
 import axios from "axios";
 
-type User = {
-  userName: string;
-  fullName: string;
-  email: string;
-  profilePicture: string;
-  biography: string;
-};
+// type User = {
+//   userName: string;
+//   fullName: string;
+//   email: string;
+//   profilePicture: string;
+//   biography: string;
+// };
 
 type Props = {
   LOGIN: (
@@ -50,9 +49,24 @@ const Login: React.FC<Props> = ({
   biography,
 }) => {
   const [value, setValue] = useState("");
+  const usersState = useSelector<RootState, types.Users["users"]>(
+    (state) => state.users.users
+  );
+  const dispatch = useDispatch();
+  const addUser = (userData: types.User) => {
+    dispatch({ type: actions.ADD_USER, payload: userData });
+  };
+
+  console.log(usersState);
 
   const handleSubmit = (e: ChangeEvent<HTMLFormElement>) => {
     e.preventDefault();
+    for (const user of usersState) {
+      if (user.userName.toLowerCase() === value.toLowerCase()) {
+        setProfile(user);
+        return;
+      }
+    }
     getProfile();
   };
 
@@ -72,8 +86,8 @@ const Login: React.FC<Props> = ({
           biography:
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
         };
-
         setProfile(user);
+        addUser(user);
       })
       .catch((err) => console.error(err));
   };
@@ -86,6 +100,7 @@ const Login: React.FC<Props> = ({
       user.profilePicture,
       user.biography
     );
+
     setValue("");
   };
 
@@ -111,9 +126,29 @@ const Login: React.FC<Props> = ({
   );
 };
 
-const LogoutBtn = styled.button({});
+const LogoutBtn = styled.button({
+  width: "75px",
+  height: "25px",
+  backgroundColor: "#50646D",
+  color: "white",
+  border: {
+    xy: {
+      color: "none",
+      width: "none",
+      style: "none",
+    },
+  },
+  borderRadius: "5px",
+  outline: { style: "none" },
+  ":hover": {
+    backgroundColor: "#88CAD9",
+  },
+  ":active": {
+    backgroundColor: "#3E7E8F",
+  },
+});
 
-const mapStateToProps = (state: RootState): UserState => {
+const mapStateToProps = (state: RootState): types.UserState => {
   return {
     isAuthed: state.user.isAuthed,
     userName: state.user.userName,
@@ -169,7 +204,28 @@ const Form = styled.form({
   alignItems: "center",
 });
 const InputUserName = styled.input({});
-const LoginBtn = styled.button({});
+const LoginBtn = styled.button({
+  marginLeft: "10px",
+  width: "125px",
+  height: "25px",
+  backgroundColor: "#50646D",
+  color: "white",
+  border: {
+    xy: {
+      color: "none",
+      width: "none",
+      style: "none",
+    },
+  },
+  borderRadius: "5px",
+  outline: { style: "none" },
+  ":hover": {
+    backgroundColor: "#88CAD9",
+  },
+  ":active": {
+    backgroundColor: "#3E7E8F",
+  },
+});
 
 // const mapDispatchToProps = (dispatch: Dispatch) => {
 //   return {

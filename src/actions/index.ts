@@ -1,2 +1,10 @@
 export const LOGIN = "LOGIN";
 export const LOGOUT = "LOGOUT";
+export const ADD_TODO = "ADD_TODO";
+export const COMPLETE_TODO = "COMPLETE_TODO";
+export const DELETE_TODO = "DELETE_TODO";
+export const SET_CATEGORY = "SET_CATEGORY";
+export const ADD_USER = "ADD_USER";
+export const GET_USER = "GET_USER";
+export const ADD_COMMENT = "ADD_COMMENT";
+export const TOGGLE_CREATOR = "TOGGLE_CREATOR";

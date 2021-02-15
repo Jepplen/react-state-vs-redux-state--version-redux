@@ -6,6 +6,10 @@ import reportWebVitals from "./reportWebVitals";
 import { Provider } from "react-redux";
 import { store } from "./store";
 
+// if (localStorage.getItem("APP_STATE")) {
+//   console.log(localStorage.getItem("APP_STATE"));
+// }
+
 store.subscribe(() => {
   const completeState = store.getState();
   localStorage.setItem("APP_STATE", JSON.stringify(completeState));
