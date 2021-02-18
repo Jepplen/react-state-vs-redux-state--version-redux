@@ -8,8 +8,6 @@ import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import ExpandLessIcon from "@material-ui/icons/ExpandLess";
 export const categories = ["Equipment", "Event", "Kitchen", "Social", "Random"];
 
-let id = 1;
-
 type Props = {
   ADD_TODO: (todo: types.Todo) => types.AddTodo;
   userName: string;
@@ -19,6 +17,11 @@ const TodoCreator: React.FC<Props> = ({ ADD_TODO, userName }) => {
   const showCreator = useSelector<RootState, boolean>(
     (state) => state.showCreator.showCreator
   );
+
+  const todos = useSelector<RootState, types.Todos["todos"]>(
+    (state) => state.todos.todos
+  );
+
   //const [showCreator, setShowCreator] = useState(false);
   const [state, setState] = useState({
     title: "",
@@ -53,7 +56,7 @@ const TodoCreator: React.FC<Props> = ({ ADD_TODO, userName }) => {
   const handleSubmit = (e: ChangeEvent<HTMLFormElement>) => {
     e.preventDefault();
     const todo: types.Todo = {
-      id: id++,
+      id: todos.length - 1 + 1,
       title: state.title,
       description: state.description,
       category: check,

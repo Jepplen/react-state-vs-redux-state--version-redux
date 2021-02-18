@@ -118,7 +118,12 @@ const Login: React.FC<Props> = ({
         <LogoutBtn onClick={handleLogout}>Logout</LogoutBtn>
       ) : (
         <Form onSubmit={handleSubmit}>
-          <InputUserName value={value} onChange={handleChange} required />
+          <InputUserName
+            value={value}
+            onChange={handleChange}
+            placeholder={"Enter your first name"}
+            required
+          />
           <LoginBtn type={"submit"}>Login</LoginBtn>
         </Form>
       )}
