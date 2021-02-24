@@ -29,9 +29,6 @@ const TodoCreator: React.FC<Props> = ({ ADD_TODO, userName }) => {
   });
   const [check, setCheck] = useState("Random");
   const dispatch = useDispatch();
-  const addNote = (note: string) => {
-    dispatch({ type: "ADD_NOTE", payload: note });
-  };
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
     const name = e.target.name;
@@ -71,8 +68,6 @@ const TodoCreator: React.FC<Props> = ({ ADD_TODO, userName }) => {
       title: "",
       description: "",
     });
-
-    addNote(state.title);
   };
 
   const handleCheck = (e: ChangeEvent<HTMLInputElement>) => {

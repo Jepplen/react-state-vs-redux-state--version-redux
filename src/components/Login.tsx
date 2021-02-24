@@ -57,8 +57,6 @@ const Login: React.FC<Props> = ({
     dispatch({ type: actions.ADD_USER, payload: userData });
   };
 
-  console.log(usersState);
-
   const handleSubmit = (e: ChangeEvent<HTMLFormElement>) => {
     e.preventDefault();
     for (const user of usersState) {
@@ -74,10 +72,6 @@ const Login: React.FC<Props> = ({
     axios
       .get("https://randomuser.me/api/?gender=male")
       .then((response) => {
-        console.log(response.data);
-
-        // gender = response.data.results[0].gender
-
         const user: types.User = {
           userName: value,
           fullName: `${value} ${response.data.results[0].name.last}`,

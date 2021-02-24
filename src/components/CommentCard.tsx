@@ -67,7 +67,7 @@ const ProfileName = styled.p({
   width: "100%",
   margin: { xy: "0" },
   cursor: "pointer",
-  color: "blue",
+  color: "black",
 });
 const Text = styled.p({
   width: "100%",

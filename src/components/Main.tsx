@@ -31,14 +31,6 @@ const Main: React.FC = () => {
   );
 };
 
-const Top = styled.div({
-  height: "25px",
-  width: "100%",
-  backgroundColor: "#353446",
-  position: "relative",
-  zIndex: 1,
-});
-
 const TodoCreatorContainer = styled.div({
   width: "100vw",
   //height: "80vh",

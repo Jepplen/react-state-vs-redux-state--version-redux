@@ -2,15 +2,13 @@ import * as actions from "../actions";
 import * as types from "../actions/types";
 import parsedStorage from "../utils/localStorage";
 
-console.log(parsedStorage);
+const initialState: types.Users = {
+  users: parsedStorage ? parsedStorage.users.users : [],
+};
 
 // const initialState: types.Users = {
 //   users: [],
 // };
-
-const initialState: types.Users = {
-  users: parsedStorage ? parsedStorage.users.users : [],
-};
 
 export const userReducer = (
   state: types.Users = initialState,

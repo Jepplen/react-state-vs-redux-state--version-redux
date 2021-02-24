@@ -10,7 +10,7 @@ const initialState: types.Todos = {
 //   todos: [],
 // };
 
-export const addTodoReducer = (
+export const todoReducer = (
   state: types.Todos = initialState,
   action: types.AddTodo | any
 ) => {
@@ -37,16 +37,6 @@ export const addTodoReducer = (
       };
     }
     case actions.COMPLETE_TODO: {
-      // const todoIndex = state.todos.findIndex(
-      //   (td) => td.id === action.payload.id
-      // );
-
-      // let currentTodos = [...state.todos];
-      // let newTodo = { ...currentTodos[todoIndex] };
-      // let updatedTodo = { ...newTodo, completed: true };
-
-      // console.log(updatedTodo);
-
       return {
         ...state,
         todos: [
@@ -59,18 +49,8 @@ export const addTodoReducer = (
           }),
         ],
       };
-
-      // return {
-      //   ...state,
-      //   todos: [
-      //     ...state.todos.slice(0, todoIndex),
-      //     updatedTodo,
-      //     ...state.todos.slice(todoIndex + 1),
-      //   ],
-      // };
     }
     case actions.DELETE_TODO: {
-      console.log(action.payload.id);
       return {
         ...state,
         todos: [...state.todos.filter((todo) => todo.id !== action.payload.id)],

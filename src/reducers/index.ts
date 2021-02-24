@@ -1,19 +1,15 @@
 import { combineReducers } from "redux";
-import { addTodoReducer } from "./addTodoReducer";
+import { todoReducer } from "./todoReducer";
 import { categoryReducer } from "./categoryReducer";
-import { commentReducer } from "./commentReducer";
 import { loginReducer } from "./loginReducer";
-import { notesReducer } from "./notesReducer";
 import { toggleCreatorReducer } from "./toggleCreatorReducer";
 import { userReducer } from "./userReducer";
 
 const rootReducer = combineReducers({
   user: loginReducer,
-  todos: addTodoReducer,
-  notes: notesReducer,
+  todos: todoReducer,
   category: categoryReducer,
   users: userReducer,
-  //comments: commentReducer,
   showCreator: toggleCreatorReducer,
 });
 

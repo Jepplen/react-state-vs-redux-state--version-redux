@@ -4,7 +4,7 @@ import { RootState } from "../reducers";
 import * as types from "../actions/types";
 import * as actions from "../actions";
 import { useState, useEffect, FormEvent } from "react";
-import { getIcon, formatText, humanizeTime } from "../utils/utils";
+import { getIcon, humanizeTime } from "../utils/utils";
 import CommentCard from "./CommentCard";
 import React from "react";
 import ProfileModal from "./ProfileModal";
@@ -43,7 +43,7 @@ const TodoPost: React.FC<Props> = ({ closePost, postId }) => {
 
   const [todo, setTodo] = useState<types.Todo>();
   const [author, setAuthor] = useState<types.User>();
-  const [user, setUser] = useState<types.User>();
+  const [, setUser] = useState<types.User>();
   const [commentUser, setCommentUser] = useState<types.User>();
   const [showProfile, setShowProfile] = useState(false);
   const [input, setInput] = useState("");
